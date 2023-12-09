@@ -20,7 +20,8 @@
   },
   "homepage": "https://minedelve.com/",
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs"
+    "build": "rollup -c --bundleConfigAsCjs",
+    "deploy": "rm -rf build/style.css && yarn publish --access public"
   },
   "files": [
     "build"
