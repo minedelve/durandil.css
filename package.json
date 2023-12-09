@@ -9,7 +9,6 @@
   "types": "build/index.d.ts",
   "type": "module",
   "exports": {
-    ".": "./build/style.css",
     "./vite": "./build/index.js"
   },
   "repository": {
