@@ -1,0 +1,32 @@
+# Dependency directories
+node_modules/
+yarn.lock
+yarn-error.log
+package-lock.json
+.svelte-kit
+
+# IDE related
+.idea
+
+# Test coverage
+coverage
+*.lcov
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+.env.test
+
+# build output
+build
+dist
+.vercel
+
+# OS-specific
+.DS_Store
+
+tmp
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
