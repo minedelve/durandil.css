@@ -20,8 +20,23 @@ const preset: Config = {
     },
   },
   fontFamily: {},
-  screens: {},
-  borderRadius: {},
+  screens: {
+    sm: "640px",
+    md: "768px",
+    lg: "1024px",
+    xl: "1280px",
+    "2xl": "1536px",
+  },
+  borderRadius: {
+    none: "0px",
+    sm: "",
+    null: "",
+    lg: "",
+    xl: "",
+    "2xl": "",
+    full: "9999px",
+    circle: "50%",
+  },
 };
 
 export default preset;

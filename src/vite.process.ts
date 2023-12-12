@@ -1,4 +1,5 @@
 import setRootCSS from "./libs/root"; // TEMP
+import setClassTheme from "./libs/theme";
 import preset from "./presets/default";
 
 export function durandilConfig() {
@@ -9,6 +10,7 @@ export function durandilConfig() {
 
       let response = "";
       response += setRootCSS(preset);
+      response += setClassTheme(preset);
 
       console.log(response);
     },
