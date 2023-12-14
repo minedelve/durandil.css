@@ -1,6 +1,6 @@
 {
   "name": "@durandil/css",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "CSS framework for rapidly building custom user interfaces.",
   "author": "Nycolaide <laurent.grimaldi@mindelve.com>",
   "license": "MIT",
