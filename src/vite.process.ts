@@ -28,8 +28,21 @@ export function durandilConfig() {
       console.log("@durandil/css run ! = configureServer");
 
       server.watcher.on("change", async (filePath: string) => {
-        if (String(filePath).includes("durandil.config.json")) {
-          console.log("@durandil/css run ! = UPDATED");
+        if (String(filePath).includes("durandil.config.js")) {
+          let configuration; // settings project
+
+          try {
+            configuration = await getProjectConfig({
+              path: configurationPathRoot,
+            });
+          } catch (err) {
+            await setProjectConfig({
+              path: pathDefaultConfig,
+              dest: pathRootConfig,
+            });
+          }
+
+          buildCSSFile(configuration);
         }
       });
     },
