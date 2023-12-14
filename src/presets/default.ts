@@ -1,11 +1,5 @@
 const preset: Config = {
-  modules: {
-    theme: true,
-    screens: true,
-    fontFamily: true,
-    borderRadius: true,
-  },
-  dark: true,
+  dark: false,
   colors: {
     test: "ffeeff",
     primary: {
@@ -42,12 +36,6 @@ const preset: Config = {
 export default preset;
 
 export interface Config {
-  modules?: {
-    theme?: boolean;
-    screens?: boolean;
-    fontFamily?: boolean;
-    borderRadius?: boolean;
-  };
   dark?: boolean;
   colors?: {
     [key: string]: string | undefined | { light?: string; dark?: string };

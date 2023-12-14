@@ -1,9 +1,6 @@
 export default {
-  //   modules: {},
-  //   dark: false,
-  //   colors: {},
-  //   fontFamily: {},
-  //   screens: {},
-  //   borderRadius: {},
+  dark: false,
+  theme: {},
+  screens: {},
   exclude: [],
 };
