@@ -19,7 +19,6 @@ export function buildCSSFile(config: any) {
     response += setClassTheme(preset);
   }
 
-  console.log("CSS", response);
   fs.writeFile(pathCssPackage, response);
   fs.writeFile(pathCssPackageMin, minimifyCss(response));
 }

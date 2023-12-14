@@ -25,8 +25,6 @@ export function durandilConfig() {
     },
     async configureServer(server: any) {
       server.watcher.add("./");
-      console.log("@durandil/css run ! = configureServer");
-
       server.watcher.on("change", async (filePath: string) => {
         if (String(filePath).includes("durandil.config.js")) {
           let configuration; // settings project
