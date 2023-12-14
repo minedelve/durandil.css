@@ -44,6 +44,16 @@ const preset: Config = {
       flex: "flex",
       "inline-flex": "inline-flex",
     },
+    shadow: {
+      sm: ["0 1px 2px 0"],
+      null: ["0 1px 3px 0", "0 1px 2px -1px"],
+      md: ["0 4px 6px -1px", "0 2px 4px -2px"],
+      lg: ["0 10px 15px -3px", "0 4px 6px -4px"],
+      xl: ["0 20px 25px -5px", "0 8px 10px -6px"],
+      "2xl": ["0 25px 50px -12px"],
+      inner: ["inset 0 2px 4px 0"],
+      none: ["0 0"],
+    },
   },
 };
 
@@ -63,6 +73,9 @@ export interface Config {
     display: {
       [key: string]: string | undefined;
     };
+    shadow: {
+      [key: string]: Array<string>;
+    };
   };
 }
 
@@ -73,6 +86,6 @@ export interface keyClassCSS {
 export interface generateClass {
   screen?: string;
   data: {
-    [key: string]: string | undefined;
+    [key: string]: string | undefined | Array<string>;
   };
 }

@@ -1,11 +1,12 @@
 import fs from "fs/promises";
-import setRootCSS from "./libs/root";
-import setClassTheme from "./libs/theme";
-
 import preset from "./presets/default";
 import { pathCssPackage, pathCssPackageMin } from "./constant";
 import { minimifyCss } from "./style";
+
+import setRootCSS from "./libs/root";
+import setClassTheme from "./libs/theme";
 import setClassDisplay from "./libs/display";
+import setClassShadow from "./libs/shadow";
 
 export function buildCSSFile(config: any) {
   let response = "";
@@ -21,6 +22,8 @@ export function buildCSSFile(config: any) {
   if (!excludeCss.includes("theme")) response += setClassTheme(preset);
   if (!excludeCss.includes("display"))
     response += setClassDisplay({ data: preset.variables.display });
+  if (!excludeCss.includes("shadow"))
+    response += setClassShadow({ data: preset.variables.shadow });
 
   for (const [key, value] of Object.entries(breakpoint!)) {
     response += `@media screen and (min-width: ${value}) {\n`;
