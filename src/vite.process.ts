@@ -1,47 +1,37 @@
-import fs from "fs/promises";
-import path from "path";
-
-import setRootCSS from "./libs/root"; // TEMP
-import setClassTheme from "./libs/theme";
-import preset from "./presets/default";
-import { minimifyCss } from "./style";
-
-const pathCss = path.resolve(`node_modules/@durandil/css/build`, "style.css");
-const pathCssMin = path.resolve(
-  `node_modules/@durandil/css/build`,
-  "style.min.css"
-);
-const rootDir = process.cwd();
-export const configPath = path.resolve(rootDir, "durandil.config.js");
+import { getProjectConfig, setProjectConfig } from "./config";
+import { buildCSSFile } from "./craft.process";
+import {
+  configurationPathRoot,
+  pathDefaultConfig,
+  pathRootConfig,
+} from "./constant";
 
 export function durandilConfig() {
   return {
     name: "durandil-css-vite",
     async configResolved() {
-      console.log("@durandil/css run ! = configResolved");
-      const file = await fs.readFile(configPath, "utf-8");
-      const defaultExportMatch = file.match(/export\s+default\s+(\{[^]*?\});/);
-      let defaultValue = null;
+      let configuration; // settings project
 
-      if (defaultExportMatch && defaultExportMatch.length > 1) {
-        const exportCode = `return ${defaultExportMatch[1]}`;
-        const defaultExportFunction = new Function(exportCode);
-        defaultValue = defaultExportFunction();
+      try {
+        configuration = await getProjectConfig({ path: configurationPathRoot });
+      } catch (err) {
+        await setProjectConfig({
+          path: pathDefaultConfig,
+          dest: pathRootConfig,
+        });
       }
 
-      console.log("defaultValue", defaultValue, defaultValue.theme);
-      let response = "";
-      response += setRootCSS(preset);
-      response += setClassTheme(preset);
-
-      // console.log(response);
-
-      fs.writeFile(pathCss, response);
-      fs.writeFile(pathCssMin, minimifyCss(response));
+      buildCSSFile(configuration);
     },
     async configureServer(server: any) {
       server.watcher.add("./");
       console.log("@durandil/css run ! = configureServer");
+
+      server.watcher.on("change", async (filePath: string) => {
+        if (String(filePath).includes("durandil.config.json")) {
+          console.log("@durandil/css run ! = UPDATED");
+        }
+      });
     },
   };
 }
