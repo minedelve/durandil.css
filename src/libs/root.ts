@@ -9,6 +9,8 @@ function setRootCSS(settings: Config) {
       for (const [key, value] of Object.entries(settings.colors)) {
         if (typeof value === "string") {
           response += ` --color-${key}: ${value};\n`;
+        } else if (typeof value === "object" && value?.light) {
+          response += ` --color-${key}: ${value?.light};\n`;
         }
       }
       response += "}\n\n";

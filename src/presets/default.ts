@@ -50,7 +50,7 @@ const preset: Config = {
       md: ["0 4px 6px -1px", "0 2px 4px -2px"],
       lg: ["0 10px 15px -3px", "0 4px 6px -4px"],
       xl: ["0 20px 25px -5px", "0 8px 10px -6px"],
-      "2xl": ["0 25px 50px -12px"],
+      xxl: ["0 25px 50px -12px"],
       inner: ["inset 0 2px 4px 0"],
       none: ["0 0"],
     },

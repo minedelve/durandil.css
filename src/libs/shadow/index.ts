@@ -3,6 +3,7 @@ import { css } from "../../utils";
 
 function setClassShadow({ data }: generateClass) {
   let response = "";
+  console.log("data", data);
   for (const [key, value] of Object.entries(data)) {
     // elevation
     response += `.shadow-${key} {\n`;

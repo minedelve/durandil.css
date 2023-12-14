@@ -38,7 +38,7 @@ export function buildCSSFile(config: any) {
     response += "}\n\n";
   }
 
-  console.log("durandil/css", response);
+  //   console.log("durandil/css", response);
   fs.writeFile(pathCssPackage, response);
   fs.writeFile(pathCssPackageMin, minimifyCss(response));
 }
