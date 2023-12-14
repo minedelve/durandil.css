@@ -1,16 +1,17 @@
 const preset: Config = {
   dark: false,
   colors: {
-    test: "ffeeff",
     primary: {
       light: "#fffff",
       dark: "#cccccc",
     },
-    secondary: {
-      dark: "#aaaaaa",
-    },
-    tertiary: {
-      light: "#121212",
+    error: { light: "#B3261E", dark: "#F2B8B5" },
+    warning: { light: "#fdb400", dark: "#fdb400" },
+    success: { light: "#4caf50", dark: "#4caf50" },
+    info: { light: "#2196f3", dark: "#2196f3" },
+    background: {
+      light: "#FFFBFE",
+      dark: "#1C1B1F",
     },
   },
   fontFamily: {},
@@ -19,7 +20,7 @@ const preset: Config = {
     md: "768px",
     lg: "1024px",
     xl: "1280px",
-    "2xl": "1536px",
+    xxl: "1536px",
   },
   borderRadius: {
     none: "0px",
@@ -31,16 +32,47 @@ const preset: Config = {
     full: "9999px",
     circle: "50%",
   },
+  variables: {
+    display: {
+      none: "none",
+      inline: "inline",
+      "inline-block": "inline-block",
+      block: "block",
+      table: "table",
+      "table-cell": "table-cell",
+      "table-row": "table-row",
+      flex: "flex",
+      "inline-flex": "inline-flex",
+    },
+  },
 };
 
 export default preset;
 
 export interface Config {
-  dark?: boolean;
-  colors?: {
+  dark: boolean;
+  colors: {
     [key: string]: string | undefined | { light?: string; dark?: string };
   };
-  fontFamily?: {};
-  screens?: {};
-  borderRadius?: {};
+  fontFamily: {};
+  screens: {
+    [key: string]: string | undefined;
+  };
+  borderRadius: {};
+  variables: {
+    display: {
+      [key: string]: string | undefined;
+    };
+  };
+}
+
+export interface keyClassCSS {
+  [key: string]: string | undefined;
+}
+
+export interface generateClass {
+  screen?: string;
+  data: {
+    [key: string]: string | undefined;
+  };
 }
