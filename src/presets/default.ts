@@ -54,6 +54,7 @@ const preset: Config = {
       inner: ["inset 0 2px 4px 0"],
       none: ["0 0"],
     },
+    grids: 12,
   },
 };
 
@@ -76,6 +77,7 @@ export interface Config {
     shadow: {
       [key: string]: Array<string>;
     };
+    grids: number;
   };
 }
 
@@ -88,4 +90,5 @@ export interface generateClass {
   data: {
     [key: string]: string | undefined | Array<string>;
   };
+  value?: number;
 }
