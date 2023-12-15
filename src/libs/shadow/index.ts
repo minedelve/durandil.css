@@ -4,7 +4,7 @@ import { css } from "../../utils";
 function setClassShadow({ data }: generateClass) {
   let response = "";
   console.log("data", data);
-  for (const [key, value] of Object.entries(data)) {
+  for (const [key, value] of Object.entries(data as Array<string>)) {
     // elevation
     response += `.shadow-${key} {\n`;
     if (value?.length === 1) {

@@ -11,6 +11,15 @@ import setClassColumns from "./libs/colums";
 import setClassMargin from "./libs/margin";
 import setClassPadding from "./libs/padding";
 import setClassAutoMargin from "./libs/autoMargin";
+import setClassFlex from "./libs/flex/flex";
+import setClassFlexAlign from "./libs/flex/flexAlign";
+import setClassFlexAlignContent from "./libs/flex/flexAlignContent";
+import setClassFlexAlignSelf from "./libs/flex/flexAlignSelf";
+import setClassFlexDirection from "./libs/flex/flexDirection";
+import setClassFlexGrowShrink from "./libs/flex/flexGrowShrink";
+import setClassFlexJustify from "./libs/flex/flexJustify";
+import setClassFlexShortland from "./libs/flex/flexShortland";
+import setClassFlexWrap from "./libs/flex/flexWrap";
 
 export function buildCSSFile(config: any) {
   let response = "";
@@ -35,6 +44,22 @@ export function buildCSSFile(config: any) {
     response += setClassMargin({ data: preset.variables.margin });
     response += setClassPadding({ data: preset.variables.padding });
     response += setClassAutoMargin({ data: {} });
+  }
+
+  if (!excludeCss.includes("flex")) {
+    response += setClassFlex({ data: preset.variables.flex });
+    response += setClassFlexAlign({ data: preset.variables.flexAlign });
+    response += setClassFlexAlignContent({
+      data: preset.variables.alignContent,
+    });
+    response += setClassFlexAlignSelf({ data: preset.variables.flexAlignSelf });
+    response += setClassFlexDirection({ data: preset.variables.flexDirection });
+    response += setClassFlexGrowShrink({
+      data: preset.variables.flexGrowShrink,
+    });
+    response += setClassFlexJustify({ data: preset.variables.flexJustify });
+    response += setClassFlexShortland({ data: preset.variables.flexShorthand });
+    response += setClassFlexWrap({ data: preset.variables.flexWrap });
   }
 
   for (const [key, value] of Object.entries(breakpoint!)) {
@@ -66,6 +91,43 @@ export function buildCSSFile(config: any) {
       });
       response += setClassAutoMargin({ screen: key, data: {} });
     }
+
+    if (!excludeCss.includes("flex")) {
+      response += setClassFlex({ screen: key, data: preset.variables.flex });
+      response += setClassFlexAlign({
+        screen: key,
+        data: preset.variables.flexAlign,
+      });
+      response += setClassFlexAlignContent({
+        screen: key,
+        data: preset.variables.alignContent,
+      });
+      response += setClassFlexAlignSelf({
+        screen: key,
+        data: preset.variables.flexAlignSelf,
+      });
+      response += setClassFlexDirection({
+        screen: key,
+        data: preset.variables.flexDirection,
+      });
+      response += setClassFlexGrowShrink({
+        screen: key,
+        data: preset.variables.flexGrowShrink,
+      });
+      response += setClassFlexJustify({
+        screen: key,
+        data: preset.variables.flexJustify,
+      });
+      response += setClassFlexShortland({
+        screen: key,
+        data: preset.variables.flexShorthand,
+      });
+      response += setClassFlexWrap({
+        screen: key,
+        data: preset.variables.flexWrap,
+      });
+    }
+
     response += "}\n\n";
   }
 

@@ -57,6 +57,70 @@ const preset: Config = {
     grids: 12,
     margin: ["auto", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     padding: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    flex: {
+      flex: "flex",
+      "inline-flex": "inline-flex",
+    },
+    alignContent: {
+      start: "flex-start",
+      end: "flex-end",
+      center: "center",
+      "space-between": "space-evenly",
+      "space-around": "space-around",
+      "space-evenly": "space-evenly",
+      stretch: "space-evenly",
+    },
+    flexShorthand: {
+      fill: "1 1 auto",
+      "1-1": "1 1 auto",
+      "1-0": "1 0 auto",
+      "0-1": "0 1 auto",
+      "0-0": "0 0 auto",
+      "1-1-100": "1 1 100%",
+      "1-0-100": "1 0 100%",
+      "0-1-100": "0 1 100%",
+      "0-0-100": "0 0 100%",
+    },
+    flexDirection: {
+      row: "row",
+      column: "column",
+      "row-reverse": "row-reverse",
+      "column-reverse": "column-reverse",
+    },
+    flexJustify: {
+      start: "flex-start",
+      end: "flex-end",
+      center: "center",
+      "space-between": "space-between",
+      "space-around": "space-around",
+      "space-evenly": "space-evenly",
+    },
+    flexAlign: {
+      start: "flex-start",
+      end: "flex-end",
+      center: "center",
+      baseline: "baseline",
+      stretch: "stretch",
+    },
+    flexAlignSelf: {
+      start: "flex-start",
+      end: "flex-end",
+      center: "center",
+      baseline: "baseline",
+      stretch: "stretch",
+      auto: "auto",
+    },
+    flexWrap: {
+      nowrap: "nowrap",
+      wrap: "wrap",
+      "wrap-reverse": "wrap-reverse",
+    },
+    flexGrowShrink: {
+      "grow-0": 0,
+      "grow-1": 1,
+      "shrink-0": 0,
+      "shrink-1": 1,
+    },
   },
 };
 
@@ -82,6 +146,15 @@ export interface Config {
     grids: number;
     margin: Array<string | number>;
     padding: Array<number>;
+    flex: { [key: string]: string | undefined };
+    alignContent: { [key: string]: string | undefined };
+    flexShorthand: { [key: string]: string | undefined };
+    flexDirection: { [key: string]: string | undefined };
+    flexJustify: { [key: string]: string | undefined };
+    flexAlign: { [key: string]: string | undefined };
+    flexAlignSelf: { [key: string]: string | undefined };
+    flexWrap: { [key: string]: string | undefined };
+    flexGrowShrink: { [key: string]: string | number | undefined };
   };
 }
 
@@ -94,7 +167,11 @@ export interface generateClass {
   data:
     | (string | number)[]
     | {
-        [key: string | number]: string | Array<string | number> | undefined;
+        [key: string | number]:
+          | string
+          | number
+          | Array<string | number>
+          | undefined;
       };
   value?: number;
 }
