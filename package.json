@@ -24,7 +24,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs && yarn default-config",
     "default-config": "cp src/config/default/durandil.config.js build/durandil.config.js",
-    "deploy": "rm -rf build/style.css && yarn publish --access public"
+    "deploy": "rm -rf build/style.css && rm -rf build/style.min.css && yarn publish --access public"
   },
   "files": [
     "build"
