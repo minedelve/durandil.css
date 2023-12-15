@@ -55,6 +55,8 @@ const preset: Config = {
       none: ["0 0"],
     },
     grids: 12,
+    margin: ["auto", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    padding: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
   },
 };
 
@@ -78,6 +80,8 @@ export interface Config {
       [key: string]: Array<string>;
     };
     grids: number;
+    margin: Array<string | number>;
+    padding: Array<number>;
   };
 }
 
@@ -87,8 +91,10 @@ export interface keyClassCSS {
 
 export interface generateClass {
   screen?: string;
-  data: {
-    [key: string]: string | undefined | Array<string>;
-  };
+  data:
+    | (string | number)[]
+    | {
+        [key: string | number]: string | Array<string | number> | undefined;
+      };
   value?: number;
 }

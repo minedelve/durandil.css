@@ -8,6 +8,9 @@ import setClassTheme from "./libs/theme";
 import setClassDisplay from "./libs/display";
 import setClassShadow from "./libs/shadow";
 import setClassColumns from "./libs/colums";
+import setClassMargin from "./libs/margin";
+import setClassPadding from "./libs/padding";
+import setClassAutoMargin from "./libs/autoMargin";
 
 export function buildCSSFile(config: any) {
   let response = "";
@@ -28,6 +31,11 @@ export function buildCSSFile(config: any) {
   if (!excludeCss.includes("grids")) {
     response += setClassColumns({ data: {}, value: preset.variables.grids });
   }
+  if (!excludeCss.includes("spacings")) {
+    response += setClassMargin({ data: preset.variables.margin });
+    response += setClassPadding({ data: preset.variables.padding });
+    response += setClassAutoMargin({ data: {} });
+  }
 
   for (const [key, value] of Object.entries(breakpoint!)) {
     response += `@media screen and (min-width: ${value}) {\n`;
@@ -47,6 +55,17 @@ export function buildCSSFile(config: any) {
       });
     }
 
+    if (!excludeCss.includes("spacings")) {
+      response += setClassMargin({
+        screen: key,
+        data: preset.variables.margin,
+      });
+      response += setClassPadding({
+        screen: key,
+        data: preset.variables.padding,
+      });
+      response += setClassAutoMargin({ screen: key, data: {} });
+    }
     response += "}\n\n";
   }
 
