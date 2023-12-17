@@ -23,6 +23,7 @@ import setClassFlexWrap from "./libs/flex/flexWrap";
 import setClassFloat from "./libs/float";
 import setNormalizeCss from "./libs/normalize";
 import setClassOrder from "./libs/order";
+import setClassRounded from "./libs/rounded";
 
 export function buildCSSFile(config: any) {
   let response = "";
@@ -74,6 +75,10 @@ export function buildCSSFile(config: any) {
 
   if (!excludeCss.includes("normalize")) {
     setNormalizeCss();
+  }
+
+  if (!excludeCss.includes("rounded")) {
+    response += setClassRounded({ data: preset.borderRadius });
   }
 
   for (const [key, value] of Object.entries(breakpoint!)) {
@@ -149,6 +154,10 @@ export function buildCSSFile(config: any) {
 
     if (!excludeCss.includes("float")) {
       response += setClassFloat({ screen: key, data: preset.variables.float });
+    }
+
+    if (!excludeCss.includes("rounded")) {
+      response += setClassRounded({ screen: key, data: preset.borderRadius });
     }
 
     response += "}\n\n";
