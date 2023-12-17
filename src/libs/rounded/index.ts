@@ -23,6 +23,7 @@ function setClassRounded({ screen, data }: generateClass) {
         value: `${value}`,
         important: true,
       });
+      response += "}\n";
       response += `.${mediaQueries(screen)}rounded-te${
         key && key !== "null" ? "-" + key : ""
       } {\n`;
@@ -120,6 +121,7 @@ function setClassRounded({ screen, data }: generateClass) {
         value: `${value}`,
         important: true,
       });
+      response += "}\n";
       response += `.rounded-te${key && key !== "null" ? "-" + key : ""} {\n`;
       response += css({
         key: "border-top-right-radius",
