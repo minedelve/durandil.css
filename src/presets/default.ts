@@ -145,6 +145,23 @@ const preset: Config = {
       "12": 12,
       last: 13,
     },
+    height: {
+      auto: "auto",
+      screen: "100dvh",
+      "0": 0,
+      "25": "25%",
+      "50": "50%",
+      "75": "75%",
+      "100": "100%",
+    },
+    width: {
+      auto: "auto",
+      "0": 0,
+      "25": "25%",
+      "50": "50%",
+      "75": "75%",
+      "100": "100%",
+    },
   },
 };
 
@@ -181,6 +198,8 @@ export interface Config {
     flexGrowShrink: { [key: string]: string | number | undefined };
     float: { [key: string]: string | undefined };
     order: { [key: string]: string | number };
+    height: { [key: string]: string | number };
+    width: { [key: string]: string | number };
   };
 }
 

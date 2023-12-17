@@ -24,6 +24,8 @@ import setClassFloat from "./libs/float";
 import setNormalizeCss from "./libs/normalize";
 import setClassOrder from "./libs/order";
 import setClassRounded from "./libs/rounded";
+import setClassWidth from "./libs/sizing/width";
+import setClassHeight from "./libs/sizing/height";
 
 export function buildCSSFile(config: any) {
   let response = "";
@@ -79,6 +81,13 @@ export function buildCSSFile(config: any) {
 
   if (!excludeCss.includes("rounded")) {
     response += setClassRounded({ data: preset.borderRadius });
+  }
+
+  if (!excludeCss.includes("sizing")) {
+    response += setClassWidth({ data: preset.variables.width });
+    response += setClassHeight({
+      data: preset.variables.height,
+    });
   }
 
   for (const [key, value] of Object.entries(breakpoint!)) {
@@ -158,6 +167,14 @@ export function buildCSSFile(config: any) {
 
     if (!excludeCss.includes("rounded")) {
       response += setClassRounded({ screen: key, data: preset.borderRadius });
+    }
+
+    if (!excludeCss.includes("sizing")) {
+      response += setClassWidth({ screen: key, data: preset.variables.width });
+      response += setClassHeight({
+        screen: key,
+        data: preset.variables.height,
+      });
     }
 
     response += "}\n\n";
