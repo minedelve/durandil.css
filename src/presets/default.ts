@@ -121,6 +121,13 @@ const preset: Config = {
       "shrink-0": 0,
       "shrink-1": 1,
     },
+    float: {
+      start: "inline-start",
+      end: "inline-end",
+      right: "right",
+      left: "left",
+      none: "none",
+    },
   },
 };
 
@@ -155,6 +162,7 @@ export interface Config {
     flexAlignSelf: { [key: string]: string | undefined };
     flexWrap: { [key: string]: string | undefined };
     flexGrowShrink: { [key: string]: string | number | undefined };
+    float: { [key: string]: string | undefined };
   };
 }
 

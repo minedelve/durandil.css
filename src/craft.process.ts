@@ -20,6 +20,8 @@ import setClassFlexGrowShrink from "./libs/flex/flexGrowShrink";
 import setClassFlexJustify from "./libs/flex/flexJustify";
 import setClassFlexShortland from "./libs/flex/flexShortland";
 import setClassFlexWrap from "./libs/flex/flexWrap";
+import setClassFloat from "./libs/float";
+import setNormalizeCss from "./libs/normalize";
 
 export function buildCSSFile(config: any) {
   let response = "";
@@ -60,6 +62,14 @@ export function buildCSSFile(config: any) {
     response += setClassFlexJustify({ data: preset.variables.flexJustify });
     response += setClassFlexShortland({ data: preset.variables.flexShorthand });
     response += setClassFlexWrap({ data: preset.variables.flexWrap });
+  }
+
+  if (!excludeCss.includes("float")) {
+    response += setClassFloat({ data: preset.variables.float });
+  }
+
+  if (!excludeCss.includes("normalize")) {
+    setNormalizeCss();
   }
 
   for (const [key, value] of Object.entries(breakpoint!)) {
@@ -126,6 +136,10 @@ export function buildCSSFile(config: any) {
         screen: key,
         data: preset.variables.flexWrap,
       });
+    }
+
+    if (!excludeCss.includes("float")) {
+      response += setClassFloat({ screen: key, data: preset.variables.float });
     }
 
     response += "}\n\n";
