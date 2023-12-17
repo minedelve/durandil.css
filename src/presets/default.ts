@@ -128,6 +128,23 @@ const preset: Config = {
       left: "left",
       none: "none",
     },
+    order: {
+      first: "-1",
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
+      "10": 10,
+      "11": 11,
+      "12": 12,
+      last: 13,
+    },
   },
 };
 
@@ -163,6 +180,7 @@ export interface Config {
     flexWrap: { [key: string]: string | undefined };
     flexGrowShrink: { [key: string]: string | number | undefined };
     float: { [key: string]: string | undefined };
+    order: { [key: string]: string | number };
   };
 }
 

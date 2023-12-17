@@ -1,22 +1,22 @@
 import { generateClass } from "../../presets/default";
 import { css, mediaQueries } from "../../utils";
 
-function setClassFloat({ screen, data }: generateClass) {
+function setClassOrder({ screen, data }: generateClass) {
   let response = "";
   for (const [key, value] of Object.entries(data)) {
-    // float
+    // order
     if (screen) {
-      response += `.${mediaQueries(screen)}float-${key} {\n`;
+      response += `.${mediaQueries(screen)}order-${key} {\n`;
       response += css({
-        key: "float",
+        key: "order",
         value: `${value}`,
         important: true,
       });
       response += "}\n";
     } else {
-      response += `.float-${key} {\n`;
+      response += `.order-${key} {\n`;
       response += css({
-        key: "float",
+        key: "order",
         value: `${value}`,
         important: true,
       });
@@ -26,4 +26,4 @@ function setClassFloat({ screen, data }: generateClass) {
   return response;
 }
 
-export default setClassFloat;
+export default setClassOrder;

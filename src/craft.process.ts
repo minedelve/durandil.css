@@ -22,6 +22,7 @@ import setClassFlexShortland from "./libs/flex/flexShortland";
 import setClassFlexWrap from "./libs/flex/flexWrap";
 import setClassFloat from "./libs/float";
 import setNormalizeCss from "./libs/normalize";
+import setClassOrder from "./libs/order";
 
 export function buildCSSFile(config: any) {
   let response = "";
@@ -41,6 +42,9 @@ export function buildCSSFile(config: any) {
     response += setClassShadow({ data: preset.variables.shadow });
   if (!excludeCss.includes("grids")) {
     response += setClassColumns({ data: {}, value: preset.variables.grids });
+    response += setClassOrder({
+      data: preset.variables.order,
+    });
   }
   if (!excludeCss.includes("spacings")) {
     response += setClassMargin({ data: preset.variables.margin });
@@ -87,6 +91,11 @@ export function buildCSSFile(config: any) {
         screen: key,
         data: {},
         value: preset.variables.grids,
+      });
+
+      response += setClassOrder({
+        screen: key,
+        data: preset.variables.order,
       });
     }
 
